@@ -289,9 +289,9 @@ def train_config():
     exp_name = "default"  # name of experiment
 
     # Environment
-    env_name = "multicomp/SumoAnts-v0"  # Gym environment ID
+    env_name = "multicomp/SumoHumans-v0"  # Gym environment ID
     num_env = 8  # number of environments to run in parallel
-    total_timesteps = 4096  # total number of timesteps to training for
+    total_timesteps = 2e06  # total number of timesteps to training for
 
     # Embedded Agent Config
     # Typically this is the victim, but for victim hardening this could be the adversary
@@ -308,7 +308,7 @@ def train_config():
 
     # RL Algorithm Hyperparameters
     rl_algo = "ppo2"  # RL algorithm to use
-    policy = "MlpPolicy"  # policy network type
+    policy = "MlpLstmPolicy"  # policy network type
     batch_size = 2048  # batch size
     learning_rate = 3e-4  # learning rate
     normalize = True  # normalize environment reward
@@ -384,7 +384,7 @@ def no_embed():
 
 
 PAPER_HYPERPARAMS = dict(
-    total_timesteps=int(20e6),
+    total_timesteps=int(2e6),
     batch_size=16384,
     learning_rate=3e-4,
     rl_args=dict(ent_coef=0.0, nminibatches=4, noptepochs=4),
